@@ -14,6 +14,20 @@ def get_len_of_attached_file(list_of_file):
     return count
 
 
+def have_attached_file(email_df):
+    count = 0
+    try:
+        if int(email_df["attachments"]) <= 20:
+            count = email_df["attachments"]
+    except:
+        pass
+
+    if count != 0:
+        return True
+    else:
+        return False
+
+
 class AttachedEmailSen(AbnormalLogon):
     """
     implement senario that user that sent frequently attached email ...
@@ -37,18 +51,16 @@ class AttachedEmailSen(AbnormalLogon):
         df = self.emailDF
         for user in self.allUsers:
             isuser = df["user"] == user
-            sent_attached_file = df["attachments"] != 0
+            sent_attached_file = have_attached_file(df)
             times = list(df[isuser & sent_attached_file]['date'].values)
             df = self.rm_extra_col()
             attached_file_dict['users'].update({user: {
                 'count_of_attached_file': int(get_len_of_attached_file(list(df[isuser]["attachments"].values))),
-                'time_of_send':
-                    times, 'count_of_abnormal_time': int(self.is_in_abnormal_time(user, times))}})
+                'time_of_send': times,
+                'count_of_abnormal_time': int(self.is_in_abnormal_time(user, times))}})
 
         return attached_file_dict
 
     def is_in_abnormal_time(self, user, list_of_time):
-
-        return len(np.setdiff1d(self.anomalyLogon(user), [d.hour for d in list(pd.to_datetime(list_of_time))]))
-
-
+        return len(set(list(pd.to_datetime(list_of_time)))) - len(
+            np.setdiff1d([d.hour for d in list(pd.to_datetime(list_of_time))], self.anomalyLogon(user)))

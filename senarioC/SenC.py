@@ -33,7 +33,7 @@ class GenerateJsonFileSenC:
     def get_info_of_attached_email(self):
         states = AttachedEmailSen(get_data_frame(get_path(self.logon)), get_data_frame(get_path(self.email)),
                                   self.get_all_users())
-        states.get_info_from_attached_emails()
+        return states.get_info_from_attached_emails()
 
     def generate_json_file(self):
         try:
@@ -45,4 +45,4 @@ class GenerateJsonFileSenC:
 
 if __name__ == "__main__":
     cs = GenerateJsonFileSenC('logon.csv', 'email.csv', 'UserProfile.csv', 'SenarioC.json')
-    print(cs.get_info_of_attached_email())
+    cs.generate_json_file()
