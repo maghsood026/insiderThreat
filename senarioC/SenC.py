@@ -44,5 +44,5 @@ class GenerateJsonFileSenC:
 
 
 if __name__ == "__main__":
-    cs = GenerateJsonFileSenC('logon.csv', 'email.csv', 'UserProfile.csv', 'senarioC.json')
+    cs = GenerateJsonFileSenC('logon.csv', 'email.csv', 'UserProfile.csv', 'SenarioC.json')
     print(cs.get_info_of_attached_email())

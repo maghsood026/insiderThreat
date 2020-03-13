@@ -48,7 +48,6 @@ class TakeAnotherPc(AbnormalLogon):
             list_of_time_logon = list(self.logon_df[is_user & pc_id & is_logon]['date'].values)
             list_of_time_usb_connected = self.list_of_time_usb_connected(user)
             total_times = list_of_time_logon + list_of_time_usb_connected
-
             dict_of_state['users'].update(
                 {user: {'logon_to_another_pc': {'count_of_logon': len(list_of_time_logon),
                                                 'time_of_logon': list_of_time_logon},
@@ -59,4 +58,5 @@ class TakeAnotherPc(AbnormalLogon):
         return dict_of_state
 
     def is_in_abnormal_time(self, user, list_of_time):
-        return len(np.setdiff1d(self.anomalyLogon(user), [d.hour for d in list(pd.to_datetime(list_of_time))]))
+        return len(set(list(pd.to_datetime(list_of_time)))) - len(
+            np.setdiff1d([d.hour for d in list(pd.to_datetime(list_of_time))], self.anomalyLogon(user)))

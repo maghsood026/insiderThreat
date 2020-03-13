@@ -14,19 +14,6 @@ def get_len_of_attached_file(list_of_file):
     return count
 
 
-def get_len_of_attached_file(list_of_file):
-    count = 0
-    for c in list_of_file:
-        try:
-            c = int(c)
-            if c <= 20:
-                count += c
-        except Exception as e:
-            pass
-
-    return count
-
-
 class AttachedEmailSen(AbnormalLogon):
     """
     implement senario that user that sent frequently attached email ...

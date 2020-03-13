@@ -56,5 +56,5 @@ class GenerateJsonFileSenB(Basic):
 
 
 if __name__ == "__main__":
-    json_file = GenerateJsonFileSenB('logon.csv', 'device.csv', 'UserProfile.csv', 'nothing.csv')
-    print(json_file.get_info_used_another_pc())
+    json_file = GenerateJsonFileSenB('logon.csv', 'device.csv', 'UserProfile.csv', 'SenarioB.json')
+    json_file.generate_json_file()
