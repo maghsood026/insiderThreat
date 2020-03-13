@@ -37,7 +37,18 @@ class TakeAnotherPc(AbnormalLogon):
     def get_info_users_used_another_pc(self):
         """
         generate dict of user that used another computer and
-        :return:
+        :return: {user: {
+                        'logon_to_another_pc': {
+                                                'count_of_logon': integer,
+
+                                                'time_of_logon': [list of time logon]
+                                                },
+                        'connect_usb_to_another_pc': {
+                                                       'count_of_connect': integer,
+                                                      'time_of_connect': [list of time usb connected]
+                                                      },
+
+                        'count_of_abnormal_time': integer }
         """
         dict_of_state = {'users': {}}
         for user in self.all_user:

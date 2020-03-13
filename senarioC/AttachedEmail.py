@@ -44,8 +44,11 @@ class AttachedEmailSen(AbnormalLogon):
 
     def get_info_from_attached_emails(self):
         """
-         calculate use ful information for attached emails
-        :return: dictionary information
+         user: {
+                'count_of_attached_file': integer,
+                'time_of_send': [list of times],
+                'count_of_abnormal_time': integer
+                 }
         """
         attached_file_dict = {'users': {}}
         df = self.emailDF
