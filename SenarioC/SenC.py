@@ -1,5 +1,5 @@
 import pandas as pd
-from senarioC.AttachedEmail import AttachedEmailSen
+from SenarioC.AttachedEmail import AttachedEmailSen
 import os
 import json
 

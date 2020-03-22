@@ -24,7 +24,7 @@ class State1:
 
     def generate_senario_file(self):
         """
-        generate senarioC.csv file with user_id, state1, state2
+        generate SenarioC.csv file with user_id, state1, state2
         :return:
         """
         users = self.get_all_users()

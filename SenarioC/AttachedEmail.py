@@ -1,5 +1,5 @@
 import pandas as pd
-from senarioC.UnNormalLogon import AbnormalLogon
+from SenarioC.UnNormalLogon import AbnormalLogon
 import numpy as np
 
 

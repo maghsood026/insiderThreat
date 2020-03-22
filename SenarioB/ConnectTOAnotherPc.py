@@ -1,5 +1,5 @@
 import json
-from senarioC.UnNormalLogon import AbnormalLogon
+from SenarioC.UnNormalLogon import AbnormalLogon
 import pandas as pd
 import numpy as np
 
